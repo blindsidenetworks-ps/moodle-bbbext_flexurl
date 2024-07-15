@@ -13,6 +13,7 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 namespace bbbext_flexurl\bigbluebuttonbn;
 
 use bbbext_flexurl\utils;
@@ -35,7 +36,7 @@ class mod_form_addons extends \mod_bigbluebuttonbn\local\extension\mod_form_addo
      * @param stdClass|null $bigbluebuttonbndata
      * @param string|null $suffix
      */
-    public function __construct(\MoodleQuickForm &$mform, ?stdClass $bigbluebuttonbndata = null, string $suffix = null) {
+    public function __construct(\MoodleQuickForm &$mform, ?stdClass $bigbluebuttonbndata = null, ?string $suffix = null) {
         parent::__construct($mform, $bigbluebuttonbndata, $suffix);
         // Supplement BBB data with additional information.
         if (!empty($bigbluebuttonbndata->id)) {

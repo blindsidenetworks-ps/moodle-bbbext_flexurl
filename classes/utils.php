@@ -13,6 +13,7 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 namespace bbbext_flexurl;
 
 use core_course\external\course_module_summary_exporter;

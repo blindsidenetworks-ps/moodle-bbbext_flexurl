@@ -13,6 +13,7 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 namespace bbbext_flexurl;
 
 use mod_bigbluebuttonbn\instance;
@@ -26,7 +27,7 @@ use mod_bigbluebuttonbn\instance;
  * @author    Laurent David (laurent@call-learning.fr)
  * @coversDefaultClass  \bbbext_flexurl\utils
  */
-class utils_test extends \advanced_testcase {
+final class utils_test extends \advanced_testcase {
     /**
      * @var \stdClass $bbb
      */
@@ -109,7 +110,7 @@ class utils_test extends \advanced_testcase {
      *
      * @covers \bbbext_flexurl\utils::get_options_for_parameters
      */
-    public function test_get_options_for_parameters() {
+    public function test_get_options_for_parameters(): void {
         $this->setAdminUser(); // To get the email.
         $options = utils::get_options_for_parameters();
         $this->assertNotEmpty($options);
@@ -161,7 +162,7 @@ class utils_test extends \advanced_testcase {
      * @covers       \bbbext_flexurl\utils::get_fields_for_parameter
      * @dataProvider provider_get_fields_for_parameter
      */
-    public function test_get_fields_for_parameter(string $paramtype, array $expected) {
+    public function test_get_fields_for_parameter(string $paramtype, array $expected): void {
         $this->setAdminUser(); // To get the email.
         $fields = utils::get_fields_for_parameter($paramtype);
         $this->assertNotEmpty($fields);
@@ -175,7 +176,7 @@ class utils_test extends \advanced_testcase {
      * @covers       \bbbext_flexurl\utils::get_value_for_field
      * @dataProvider provider_get_value_for_fields
      */
-    public function test_get_value_for_field(array $expected) {
+    public function test_get_value_for_field(array $expected): void {
         $instance = instance::get_from_instanceid($this->bbb->id);
 
         $this->setUser($this->user);
