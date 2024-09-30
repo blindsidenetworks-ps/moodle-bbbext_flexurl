@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="mod/bigbluebuttonbn//extension/flexurl/db" VERSION="20230210" COMMENT="XMLDB file for Moodle mod/bigbluebuttonbn/extension/flexurl"
+<XMLDB PATH="mod/bigbluebuttonbn//extension/bnurl/db" VERSION="20230210" COMMENT="XMLDB file for Moodle mod/bigbluebuttonbn/extension/bnurl"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="../../../../../lib/xmldb/xmldb.xsd"
 >
     <TABLES>
-        <TABLE NAME="bbbext_flexurl" COMMENT="This tables store all the additional parameters that can be passed on create or join">
+        <TABLE NAME="bbbext_bnurl" COMMENT="This tables store all the additional parameters that can be passed on create or join">
             <FIELDS>
                 <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
                 <FIELD NAME="bigbluebuttonbnid" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false"/>

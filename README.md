@@ -1,11 +1,11 @@
-BigBlueButton Extension - FlexURL
+BigBlueButton Extension - BN URL
 =======================
 * Copyright: Blindside Networks Inc
 * License:  GNU GENERAL PUBLIC LICENSE Version 3
 
 Overview
 ===========
-The FlexURL subplugin enhances the BigBlueButtonBN module by passing additional parameters when a BigBlueButtonBN session is created, joined or both. The parameters can be custom defined, or information from user, course and activity module.
+The BN URL subplugin enhances the BigBlueButtonBN module by passing additional parameters when a BigBlueButtonBN session is created, joined or both. The parameters can be custom defined, or information from user, course and activity module.
 
 Features
 ===========
@@ -22,15 +22,15 @@ Git installation
 ------------
 1. Clone the repository:
 
-`git clone https://github.com/blindsidenetworks-ps/moodle-bbbext_flexurl.git`
+`git clone https://github.com/blindsidenetworks-ps/moodle-bbbext_bnurl.git`
 
 2. Rename the downloaded directory:
 
-`mv moodle-bbbext_flexurl flexurl`
+`mv moodle-bbbext_bnurl bnurl`
 
 3. Move the folder to the Moodle BigBlueButtonBN extensions directory:
 
-`mv flexurl /var/www/html/moodle/mod/bigbluebuttonbn/extension/`
+`mv bnurl /var/www/html/moodle/mod/bigbluebuttonbn/extension/`
 
 4. Run the Moodle upgrade script:
 
@@ -40,7 +40,7 @@ Manual installation
 ------------
 1. Download the sub plugin zip file and extract it.
 2. Place the extracted folder into `mod/bigbluebuttonbn/extension/`
-3. Rename the folder `flexurl`
+3. Rename the folder `bnurl`
 4. Access Moodle's Admin UI at `Site administration > Plugins > Install plugins` to complete the installation.
 
 Configuration
@@ -86,4 +86,4 @@ Requirements
 ============
 Requires BigBlueButtonBN module version > 2022112802
 
-For more detailed updates and support, visit the [FlexURL Subplugin GitHub Repository](https://github.com/blindsidenetworks-ps/moodle-bbbext_flexurl)
+For more detailed updates and support, visit the [BN URL Subplugin GitHub Repository](https://github.com/blindsidenetworks-ps/moodle-bbbext_bnurl)

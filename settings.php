@@ -17,7 +17,7 @@
 /**
  * This file defines the admin settings for this plugin
  *
- * @package   bbbext_flexurl
+ * @package   bbbext_bnurl
  * @copyright 2023 onwards, Blindside Networks Inc
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @author    Laurent David (laurent@call-learning.fr)
@@ -25,11 +25,11 @@
 
 defined('MOODLE_INTERNAL') || die;
 $availableinfosetting = new admin_setting_configmultiselect(
-    'bbbext_flexurl/available_info',
-    new lang_string('available_info', 'bbbext_flexurl'),
-    new lang_string('available_info_desc', 'bbbext_flexurl'),
+    'bbbext_bnurl/available_info',
+    new lang_string('available_info', 'bbbext_bnurl'),
+    new lang_string('available_info_desc', 'bbbext_bnurl'),
     [],
-    \bbbext_flexurl\utils::get_parameter_types()
+    \bbbext_bnurl\utils::get_parameter_types()
 );
 
 $settings->add($availableinfosetting);

@@ -17,7 +17,7 @@
 /**
  * Language File.
  *
- * @package   bbbext_flexurl
+ * @package   bbbext_bnurl
  * @copyright 2023 onwards, Blindside Networks Inc
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @author    Laurent David (laurent@call-learning.fr)
@@ -39,7 +39,7 @@ $string['param_eventtype'] = 'Parameter event type';
 $string['param_name'] = 'Parameter name';
 $string['param_value'] = 'Parameter value';
 $string['paramgroup'] = 'Parameter';
-$string['pluginname'] = 'BigBlueButton FlexURL';
+$string['pluginname'] = 'BigBlueButton BN URL';
 $string['user_info'] = 'Basic user info (USER)';
 
 
