@@ -17,7 +17,7 @@
 /**
  * This file contains the version information for the sample bigbluebuttonbn subplugin
  *
- * @package   bbbext_flexurl
+ * @package   bbbext_bnurl
  * @copyright 2023 onwards, Blindside Networks Inc
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @author    Laurent David  (laurent [at] call-learning [dt] fr)
@@ -26,4 +26,4 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin->version   = 2023020800;
 $plugin->requires  = 2022112800;
-$plugin->component = 'bbbext_flexurl';
+$plugin->component = 'bbbext_bnurl';

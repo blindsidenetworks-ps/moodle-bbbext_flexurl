@@ -14,18 +14,18 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace bbbext_flexurl;
+namespace bbbext_bnurl;
 
 use mod_bigbluebuttonbn\instance;
 
 /**
  * BBB Utils tests class.
  *
- * @package   bbbext_flexurl
+ * @package   bbbext_bnurl
  * @copyright 2023 onwards, Blindside Networks Inc
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @author    Laurent David (laurent@call-learning.fr)
- * @coversDefaultClass  \bbbext_flexurl\utils
+ * @coversDefaultClass  \bbbext_bnurl\utils
  */
 final class utils_test extends \advanced_testcase {
     /**
@@ -101,14 +101,14 @@ final class utils_test extends \advanced_testcase {
             'email' => 'bbb@blindsidenetworks.com', ]);
         $bbbgenerator = $datagenerator->get_plugin_generator('mod_bigbluebuttonbn');
         $this->bbb = $bbbgenerator->create_instance(['name' => 'BBB Activity', 'course' => $this->course->id]);
-        set_config('available_info', 'user, courseinfo, activityinfo', 'bbbext_flexurl');
+        set_config('available_info', 'user, courseinfo, activityinfo', 'bbbext_bnurl');
         $datagenerator->enrol_user($this->user->id, $this->course->id);
     }
 
     /**
      * Test get_options_for_parameters
      *
-     * @covers \bbbext_flexurl\utils::get_options_for_parameters
+     * @covers \bbbext_bnurl\utils::get_options_for_parameters
      */
     public function test_get_options_for_parameters(): void {
         $this->setAdminUser(); // To get the email.
@@ -159,7 +159,7 @@ final class utils_test extends \advanced_testcase {
      * @param string $paramtype
      * @param array $expected
      *
-     * @covers       \bbbext_flexurl\utils::get_fields_for_parameter
+     * @covers       \bbbext_bnurl\utils::get_fields_for_parameter
      * @dataProvider provider_get_fields_for_parameter
      */
     public function test_get_fields_for_parameter(string $paramtype, array $expected): void {
@@ -173,7 +173,7 @@ final class utils_test extends \advanced_testcase {
      * Test get_value_for_field
      *
      * @param array $expected
-     * @covers       \bbbext_flexurl\utils::get_value_for_field
+     * @covers       \bbbext_bnurl\utils::get_value_for_field
      * @dataProvider provider_get_value_for_fields
      */
     public function test_get_value_for_field(array $expected): void {

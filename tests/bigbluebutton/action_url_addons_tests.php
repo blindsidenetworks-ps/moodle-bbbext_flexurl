@@ -14,9 +14,9 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace bbbext_flexurl\bigbluebuttonbn;
+namespace bbbext_bnurl\bigbluebuttonbn;
 
-use bbbext_flexurl\utils;
+use bbbext_bnurl\utils;
 use mod_bigbluebuttonbn\extension;
 use mod_bigbluebuttonbn\external\get_join_url;
 use mod_bigbluebuttonbn\instance;
@@ -24,7 +24,7 @@ use mod_bigbluebuttonbn\instance;
 /**
  * Action URL addons tests
  *
- * @package   bbbext_flexurl
+ * @package   bbbext_bnurl
  * @copyright 2023 onwards, Blindside Networks Inc
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @author    Laurent David (laurent@call-learning.fr)
@@ -55,15 +55,15 @@ class action_url_addons_tests extends \advanced_testcase {
             'email' => 'bbb@blindsidenetworks.com', ]);
         $bbbgenerator = $datagenerator->get_plugin_generator('mod_bigbluebuttonbn');
         $this->bbb = $bbbgenerator->create_instance(['name' => 'BBB Activity', 'course' => $this->course->id]);
-        set_config('available_info', 'user, courseinfo, activityinfo', 'bbbext_flexurl');
+        set_config('available_info', 'user, courseinfo, activityinfo', 'bbbext_bnurl');
         $datagenerator->enrol_user($this->user->id, $this->course->id);
-        $DB->insert_record('bbbext_flexurl',
+        $DB->insert_record('bbbext_bnurl',
             ['bigbluebuttonbnid' => $this->bbb->id, 'eventtype' => utils::ACTION_CODES['create'], 'paramname' => 'firstname',
                 'paramvalue' => 'user.firstname', ]);
-        $DB->insert_record('bbbext_flexurl',
+        $DB->insert_record('bbbext_bnurl',
             ['bigbluebuttonbnid' => $this->bbb->id, 'eventtype' => utils::ACTION_CODES['join'], 'paramname' => 'lastname',
                 'paramvalue' => 'user.lastname', ]);
-        $DB->insert_record('bbbext_flexurl',
+        $DB->insert_record('bbbext_bnurl',
             ['bigbluebuttonbnid' => $this->bbb->id, 'eventtype' => utils::ACTION_CODES['all'], 'paramname' => 'coursename',
                 'paramvalue' => 'courseinfo.fullname', ]);
     }

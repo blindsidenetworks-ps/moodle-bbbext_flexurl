@@ -14,16 +14,16 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace bbbext_flexurl\bigbluebuttonbn;
+namespace bbbext_bnurl\bigbluebuttonbn;
 
-use bbbext_flexurl\utils;
+use bbbext_bnurl\utils;
 use core_form\util;
 use mod_bigbluebuttonbn\instance;
 
 /**
  * A single action class to mutate the action URL.
  *
- * @package   bbbext_flexurl
+ * @package   bbbext_bnurl
  * @copyright 2023 onwards, Blindside Networks Inc
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @author    Laurent David (laurent@call-learning.fr)
@@ -44,16 +44,16 @@ class action_url_addons extends \mod_bigbluebuttonbn\local\extension\action_url_
         global $DB;
         if ($instanceid) {
             $instance = instance::get_from_instanceid($instanceid);
-            $flexurlrecords = $DB->get_records(mod_instance_helper::SUBPLUGIN_TABLE, [
+            $bnurlrecords = $DB->get_records(mod_instance_helper::SUBPLUGIN_TABLE, [
                 'bigbluebuttonbnid' => $instanceid,
             ]);
             $eventtypes = array_flip(utils::ACTION_CODES);
-            foreach ($flexurlrecords as $flexurlrecord) {
-                if ($flexurlrecord->eventtype != utils::ACTION_CODES['all'] &&
-                    $eventtypes[$flexurlrecord->eventtype] != $action) {
+            foreach ($bnurlrecords as $bnurlrecord) {
+                if ($bnurlrecord->eventtype != utils::ACTION_CODES['all'] &&
+                    $eventtypes[$bnurlrecord->eventtype] != $action) {
                     continue;
                 }
-                $data[$flexurlrecord->paramname] = utils::get_real_value($flexurlrecord->paramvalue, $instance);
+                $data[$bnurlrecord->paramname] = utils::get_real_value($bnurlrecord->paramvalue, $instance);
 
             }
         }

@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace bbbext_flexurl;
+namespace bbbext_bnurl;
 
 use core_course\external\course_module_summary_exporter;
 use core_course\external\course_summary_exporter;
@@ -23,7 +23,7 @@ use mod_bigbluebuttonbn\instance;
 /**
  * Utility class
  *
- * @package   bbbext_flexurl
+ * @package   bbbext_bnurl
  * @copyright 2023 onwards, Blindside Networks Inc
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @author    Laurent David (laurent@call-learning.fr)
@@ -54,7 +54,7 @@ class utils {
     public static function get_options_for_parameters(): array {
         $parametertypes = self::get_parameter_types();
         $options = [];
-        $selectedptypes = explode(',', get_config('bbbext_flexurl', 'available_info'));
+        $selectedptypes = explode(',', get_config('bbbext_bnurl', 'available_info'));
         $selectedptypes = array_map('trim', $selectedptypes);
         foreach ($parametertypes as $key => $value) {
             if (in_array($key, $selectedptypes)) {
@@ -77,9 +77,9 @@ class utils {
      */
     public static function get_parameter_types(): array {
         return [
-            'activityinfo' => get_string('activity_info', 'bbbext_flexurl'),
-            'courseinfo' => get_string('course_info', 'bbbext_flexurl'),
-            'user' => get_string('user_info', 'bbbext_flexurl'),
+            'activityinfo' => get_string('activity_info', 'bbbext_bnurl'),
+            'courseinfo' => get_string('course_info', 'bbbext_bnurl'),
+            'user' => get_string('user_info', 'bbbext_bnurl'),
         ];
     }
 
@@ -239,9 +239,9 @@ class utils {
      */
     public static function get_option_for_eventtype() {
         return [
-            self::ACTION_CODES['create'] => get_string('event_create', 'bbbext_flexurl'),
-            self::ACTION_CODES['join'] => get_string('event_join', 'bbbext_flexurl'),
-            self::ACTION_CODES['all'] => get_string('event_all', 'bbbext_flexurl'),
+            self::ACTION_CODES['create'] => get_string('event_create', 'bbbext_bnurl'),
+            self::ACTION_CODES['join'] => get_string('event_join', 'bbbext_bnurl'),
+            self::ACTION_CODES['all'] => get_string('event_all', 'bbbext_bnurl'),
         ];
     }
 }

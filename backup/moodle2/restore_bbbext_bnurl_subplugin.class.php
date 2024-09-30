@@ -15,41 +15,41 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Provides the information for backup.
+ * Provides the information for restore.
  *
- * @package   bbbext_flexurl
+ *
+ * @package   bbbext_bnurl
  * @copyright 2023 onwards, Blindside Networks Inc
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @author    Laurent David (laurent@call-learning.fr)
  */
-class backup_bbbext_flexurl_subplugin extends backup_subplugin {
-
+class restore_bbbext_bnurl_subplugin extends restore_subplugin {
     /**
-     * Returns the subplugin information to attach the BigBlueButton instance.
+     * Returns the paths to be handled by the subplugin.
      *
-     * @return backup_subplugin_element
+     * @return array
      */
     protected function define_bigbluebuttonbn_subplugin_structure() {
+        $paths = [];
 
-        // Create XML elements.
-        $subplugin = $this->get_subplugin_element();
-        $subpluginwrapper = new backup_nested_element($this->get_recommended_name());
-        $subpluginelement = new backup_nested_element(
-            'bbbext_flexurl',
-            null,
-            ['eventtype', 'paramname', 'paramvalue']
-        );
+        $elename = $this->get_namefor('bigbluebuttonbn');
+        // We used get_recommended_name() so this works.
+        $elepath = $this->get_pathfor('/bbbext_bnurl');
 
-        // Connect XML elements into the tree.
-        $subplugin->add_child($subpluginwrapper);
-        $subpluginwrapper->add_child($subpluginelement);
+        $paths[] = new restore_path_element($elename, $elepath);
+        return $paths;
+    }
 
-        // Set source to populate the data.
-        $subpluginelement->set_source_table(
-            'bbbext_flexurl',
-            ['bigbluebuttonbnid' => backup::VAR_PARENTID]
-        );
+    /**
+     * Processes one subplugin instance additional parameter.
+     *
+     * @param mixed $data
+     */
+    public function process_bbbext_bnurl_bigbluebuttonbn($data) {
+        global $DB;
 
-        return $subplugin;
+        $data = (object) $data;
+        $data->bigbluebuttonbnid = $this->get_new_parentid('bigbluebuttonbn');
+        $DB->insert_record('bbbext_bnurl', $data);
     }
 }

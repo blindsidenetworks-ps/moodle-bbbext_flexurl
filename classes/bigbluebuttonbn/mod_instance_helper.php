@@ -14,15 +14,15 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace bbbext_flexurl\bigbluebuttonbn;
+namespace bbbext_bnurl\bigbluebuttonbn;
 
-use bbbext_flexurl\utils;
+use bbbext_bnurl\utils;
 use stdClass;
 
 /**
  * Class defining a way to deal with instance save/update/delete in extension
  *
- * @package   bbbext_flexurl
+ * @package   bbbext_bnurl
  * @copyright 2023 onwards, Blindside Networks Inc
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @author    Laurent David (laurent@call-learning.fr)
@@ -31,7 +31,7 @@ class mod_instance_helper extends \mod_bigbluebuttonbn\local\extension\mod_insta
     /**
      * This is the name of the table that will be used to store additional data for the instance.
      */
-    const SUBPLUGIN_TABLE = 'bbbext_flexurl';
+    const SUBPLUGIN_TABLE = 'bbbext_bnurl';
 
     /**
      * Runs any processes that must run before a bigbluebuttonbn insert/update.
@@ -43,7 +43,7 @@ class mod_instance_helper extends \mod_bigbluebuttonbn\local\extension\mod_insta
     }
 
     /**
-     * Make sure that the bbbext_flexurl has the right parameters (and not more)
+     * Make sure that the bbbext_bnurl has the right parameters (and not more)
      *
      * @param stdClass $bigbluebuttonbn
      * @return void
@@ -53,22 +53,22 @@ class mod_instance_helper extends \mod_bigbluebuttonbn\local\extension\mod_insta
         // Retrieve existing parameters from the database.
         $existingparams = $DB->get_records(self::SUBPLUGIN_TABLE, ['bigbluebuttonbnid' => $bigbluebuttonbn->id]);
         // Checks first.
-        $count = $bigbluebuttonbn->flexurl_paramcount ?? 0;
+        $count = $bigbluebuttonbn->bnurl_paramcount ?? 0;
         foreach (utils::PARAM_TYPES as $type => $paramtype) {
-            if (!isset($bigbluebuttonbn->{'flexurl_' . $type})) {
+            if (!isset($bigbluebuttonbn->{'bnurl_' . $type})) {
                 // If the parameters were deleted, the deletion must be synced in the DB.
                 if (!empty($existingparams)) {
                     continue;
                 }
                 return;
             }
-            if ($count != count($bigbluebuttonbn->{'flexurl_' . $type})) {
-                debugging('FlexURL : The number of ' . $type . ' does not match the number of parameters.');
+            if ($count != count($bigbluebuttonbn->{'bnurl_' . $type})) {
+                debugging('BN URL : The number of ' . $type . ' does not match the number of parameters.');
                 return;
             }
-            if (clean_param_array($bigbluebuttonbn->{'flexurl_' . $type}, $paramtype, true) !=
-                $bigbluebuttonbn->{'flexurl_' . $type}) {
-                debugging('FlexURL : The ' . $type . ' contains invalid value.');
+            if (clean_param_array($bigbluebuttonbn->{'bnurl_' . $type}, $paramtype, true) !=
+                $bigbluebuttonbn->{'bnurl_' . $type}) {
+                debugging('BN URL : The ' . $type . ' contains invalid value.');
                 return;
             }
         }
@@ -79,7 +79,7 @@ class mod_instance_helper extends \mod_bigbluebuttonbn\local\extension\mod_insta
         for ($index = 0; $index < $count; $index++) {
             $queryfields = [];
             foreach (array_keys(utils::PARAM_TYPES) as $type) {
-                $queryfields[$type] = $bigbluebuttonbn->{'flexurl_' . $type}[$index];
+                $queryfields[$type] = $bigbluebuttonbn->{'bnurl_' . $type}[$index];
             }
             $queryfields['bigbluebuttonbnid'] = $bigbluebuttonbn->id;
             $DB->insert_record(self::SUBPLUGIN_TABLE, (object) $queryfields);
