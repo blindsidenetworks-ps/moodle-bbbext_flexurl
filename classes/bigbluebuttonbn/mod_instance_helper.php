@@ -50,10 +50,16 @@ class mod_instance_helper extends \mod_bigbluebuttonbn\local\extension\mod_insta
      */
     private function sync_additional_params(stdClass $bigbluebuttonbn): void {
         global $DB;
+        // Retrieve existing parameters from the database.
+        $existingparams = $DB->get_records(self::SUBPLUGIN_TABLE, ['bigbluebuttonbnid' => $bigbluebuttonbn->id]);
         // Checks first.
         $count = $bigbluebuttonbn->flexurl_paramcount ?? 0;
         foreach (utils::PARAM_TYPES as $type => $paramtype) {
             if (!isset($bigbluebuttonbn->{'flexurl_' . $type})) {
+                // If the parameters were deleted, the deletion must be synced in the DB.
+                if (!empty($existingparams)) {
+                    continue;
+                }
                 return;
             }
             if ($count != count($bigbluebuttonbn->{'flexurl_' . $type})) {

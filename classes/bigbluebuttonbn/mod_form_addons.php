@@ -188,6 +188,7 @@ class mod_form_addons extends \mod_bigbluebuttonbn\local\extension\mod_form_addo
                     'tags' => true,
                 ]
             );
+            $paramvalue->setValue('');
             $paramtype = $this->mform->createElement(
                 'select',
                 "flexurl_eventtype[$index]",
